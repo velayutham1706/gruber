@@ -10,6 +10,7 @@ vim.o.smartindent = true
 vim.o.softtabstop = 2
 vim.o.showmode = true
 vim.o.laststatus = 0
+vim.o.cursorline = true
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true }) -- Move down
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true }) -- Move up
@@ -50,6 +51,21 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+	callback = function()
+		vim.api.nvim_set_hl(0, "CursorLine", {
+			bg = "none",
+		})
+		vim.api.nvim_set_hl(0, "CursorLineNr", {
+			fg = "#FFDD33",
+			bold = false,
+		})
+		vim.api.nvim_set_hl(0, "LineNr", {
+			fg = "grey",
+		})
+	end,
+})
 
 vim.opt.guicursor = "n-v-c-i:block"
 

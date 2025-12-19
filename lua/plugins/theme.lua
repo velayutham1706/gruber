@@ -60,3 +60,26 @@ return {
 		vim.cmd("colorscheme gruber-darker")
 	end,
 }
+
+-- return {
+-- 	"Rrethy/nvim-base16",
+-- 	priority = 1000,
+-- 	config = function()
+-- 		-- Available variants: gorgoroth, bathory, mayhem, khold, burzum
+-- 		local variant = "mayhem"
+-- 		vim.cmd("colorscheme base16-black-metal-" .. variant)
+-- 		local set_hl = vim.api.nvim_set_hl
+--
+-- 		-- Comments
+-- 		set_hl(0, "Comment", { fg = "#6c6c6c", italic = true })
+-- 		set_hl(0, "@comment", { fg = "#6c6c6c", italic = true })
+--
+-- 		set_hl(0, "Normal", { bg = "NONE" })
+-- 		set_hl(0, "NormalNC", { bg = "NONE" })
+-- 		set_hl(0, "NormalFloat", { bg = "NONE" })
+-- 		set_hl(0, "SignColumn", { bg = "NONE" })
+-- 		set_hl(0, "EndOfBuffer", { bg = "NONE" })
+-- 		set_hl(0, "@string", { fg = "#ffffff", bold = false })
+-- 		set_hl(0, "@string.content", { fg = "#ffffff", bold = false })
+-- 	end,
+-- }
