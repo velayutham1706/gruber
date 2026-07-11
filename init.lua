@@ -11,6 +11,12 @@ vim.o.softtabstop = 2
 vim.o.showmode = true
 vim.o.laststatus = 0
 vim.o.cursorline = true
+vim.g.loaded_matchparen = 1
+vim.api.nvim_set_hl(0, "MatchParen", { link = "Normal" })
+vim.opt.shell = "pwsh"
+vim.opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy Bypass -Command"
+vim.opt.shellquote = ""
+vim.opt.shellxquote = ""
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true }) -- Move down
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true }) -- Move up
@@ -57,10 +63,10 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		vim.api.nvim_set_hl(0, "CursorLine", {
 			bg = "none",
 		})
-		vim.api.nvim_set_hl(0, "CursorLineNr", {
-			fg = "#FFDD33",
-			bold = false,
-		})
+		-- vim.api.nvim_set_hl(0, "CursorLineNr", {
+		-- 	fg = "#FFDD33",
+		-- 	bold = false,
+		-- })
 		vim.api.nvim_set_hl(0, "LineNr", {
 			fg = "grey",
 		})

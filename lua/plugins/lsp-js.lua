@@ -11,6 +11,13 @@ return {
 			opts.servers.eslint = {
 				capabilities = capabilities,
 			}
+			opts.servers.dartls = {
+				capabilities = capabilities,
+			}
+			opts.servers.dcm = {
+				cmd = { "dcm", "lsp" },
+				filetypes = { "dart" },
+			}
 			return opts
 		end,
 	},

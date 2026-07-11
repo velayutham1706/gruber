@@ -238,6 +238,12 @@ return {
 						},
 					},
 				},
+
+				dcm = {
+					cmd = { "dcm", "lsp" },
+					filetypes = { "dart" },
+					root_dir = require("lspconfig.util").root_pattern("pubspec.yaml", ".git"),
+				},
 			}
 
 			-- Ensure the servers and tools above are installed
@@ -307,6 +313,7 @@ return {
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
+				dart = { "dart_format" },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--
@@ -319,7 +326,11 @@ return {
 	{
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"stevearc/dressing.nvim",
+			"nvim-flutter/flutter-tools.nvim",
+		},
 		opts = { signs = false },
 	},
 }
