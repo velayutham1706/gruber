@@ -33,6 +33,7 @@ return {
 				"blade",
 				"dart",
 				"sql",
+				"pascal",
 			},
 			highlight = {
 				enable = true,

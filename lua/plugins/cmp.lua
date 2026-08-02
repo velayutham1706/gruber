@@ -17,6 +17,18 @@ return {
 					require("luasnip").lsp_expand(args.body)
 				end,
 			},
+
+			window = {
+				completion = cmp.config.window.bordered({
+					border = "rounded",
+					winhighlight = "Normal:Pmenu,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None",
+				}),
+				documentation = cmp.config.window.bordered({
+					border = "rounded",
+					winhighlight = "Normal:NormalFloat,FloatBorder:CmpBorder",
+				}),
+			},
+
 			mapping = {
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
 				["<Tab>"] = cmp.mapping.select_next_item(),
