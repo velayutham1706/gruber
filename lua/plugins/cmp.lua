@@ -31,8 +31,30 @@ return {
 
 			mapping = {
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
-				["<Tab>"] = cmp.mapping.select_next_item(),
-				["<S-Tab>"] = cmp.mapping.select_prev_item(),
+				["<Tab>"] = cmp.mapping(function(fallback)
+					local luasnip = require("luasnip")
+
+					if cmp.visible() then
+						cmp.select_next_item()
+					elseif luasnip.expand_or_jumpable() then
+						luasnip.expand_or_jump()
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
+
+				["<S-Tab>"] = cmp.mapping(function(fallback)
+					local luasnip = require("luasnip")
+
+					if cmp.visible() then
+						cmp.select_prev_item()
+					elseif luasnip.expand_or_jumpable(-1) then
+						luasnip.expand_or_jump(-1)
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
+
 				["<C-n>"] = cmp.mapping.select_next_item(),
 				["<C-p>"] = cmp.mapping.select_prev_item(),
 			},

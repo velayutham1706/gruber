@@ -2,6 +2,7 @@ vim.opt.number = true
 vim.opt.smartindent = true
 vim.opt.relativenumber = true
 vim.g.mapleader = " "
+vim.o.statuscolumn = "%s%=%{v:relnum ? v:relnum : v:lnum} "
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
@@ -29,6 +30,8 @@ vim.keymap.set("n", "<leader>y", '"+y', { noremap = true, silent = true })
 vim.keymap.set("v", "<leader>y", '"+y', { noremap = true, silent = true })
 vim.keymap.set("n", "<C-v>", "<C-v>", { noremap = true })
 vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Open Parent Directory" })
+vim.keymap.set("n", "<leader>i", "<cmd>Inspect<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.setloclist, { desc = "Open diagnostic location list" })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking text",
@@ -45,14 +48,16 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("ColorScheme", {
-	callback = function()
-		vim.api.nvim_set_hl(0, "Visual", {
-			fg = "#000000",
-			bg = "#8c7f70",
-		})
-	end,
-})
+-- vim.api.nvim_create_autocmd("ColorScheme", {
+-- 	callback = function()
+-- 		vim.api.nvim_set_hl(0, "Visual", {
+-- 			fg = "#000000",
+-- 			-- bg = "#8c7f70",
+-- 			-- bg = "#EBDBB2",
+-- 			bg = "#8C7F70",
+-- 		})
+-- 	end,
+-- })
 
 vim.api.nvim_set_hl(0, "TelescopePreviewMatch", {
 	bg = "#8c7f70",
@@ -72,23 +77,24 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.api.nvim_create_autocmd("ColorScheme", {
-	callback = function()
-		vim.api.nvim_set_hl(0, "CursorLine", {
-			bg = "none",
-		})
-		-- vim.api.nvim_set_hl(0, "CursorLineNr", {
-		-- 	fg = "#FFDD33",
-		-- 	bold = false,
-		-- })
-		vim.api.nvim_set_hl(0, "LineNr", {
-			fg = "grey",
-		})
-	end,
-})
+-- vim.api.nvim_create_autocmd("ColorScheme", {
+-- 	callback = function()
+-- 		vim.api.nvim_set_hl(0, "CursorLine", {
+-- 			bg = "none",
+-- 		})
+-- 		-- vim.api.nvim_set_hl(0, "CursorLineNr", {
+-- 		-- 	fg = "#FFDD33",
+-- 		-- 	bold = false,
+-- 		-- })
+-- 		vim.api.nvim_set_hl(0, "LineNr", {
+-- 			fg = "grey",
+-- 		})
+-- 	end,
+-- })
 
 vim.opt.guicursor = "n-v-c-i:block"
 
 require("lazy").setup("plugins")
 
 require("config.colors")
+require("config.options")

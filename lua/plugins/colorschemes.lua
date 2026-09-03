@@ -1,5 +1,9 @@
 return {
 	{
+		"metalelf0/black-metal-theme-neovim",
+		priority = 1000,
+	},
+	{
 		"RRethy/base16-nvim",
 		priority = 1000,
 	},
@@ -18,11 +22,15 @@ return {
 		dependencies = "rktjmp/lush.nvim",
 	},
 	{
-		"aktersnurra/no-clown-fiesta.nvim",
-		priority = 1000,
+		"webhooked/kanso.nvim",
 	},
 	{
-		"ramojus/mellifluous.nvim",
-		priority = 1000,
+		"ellisonleao/gruvbox.nvim",
+	},
+	{
+		"folke/tokyonight.nvim",
+	},
+	{
+		"CosecSecCot/cosec-twilight.nvim",
 	},
 }
